@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>立体パズル 個別回転版</title>
-<link rel="stylesheet" href="style.css">
-
+<title>立体パズル 最終完成版</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <canvas id="app"></canvas>
@@ -76,112 +75,6 @@
     </div>
   </div>
 </div>
-
-<script>
-const canvas = document.getElementById('app');
-const ctx = canvas.getContext('2d');
-const reviewOverlay = document.getElementById('reviewOverlay');
-const cube3dOverlay = document.getElementById('cube3dOverlay');
-const cube3dEl = document.getElementById('cube3d');
-const cube3dWrap = document.getElementById('cube3dWrap');
-const openCube3DBtn = document.getElementById('openCube3DBtn');
-const closeCube3DBtn = document.getElementById('closeCube3DBtn');
-const toggleAutoSpinBtn = document.getElementById('toggleAutoSpinBtn');
-
-const closeReviewBtn = document.getElementById('closeReviewBtn');
-const openReviewBtn = document.getElementById('openReviewBtn');
-const reviewCanvases = {
-  top: document.getElementById('face_top'),
-  front: document.getElementById('face_front'),
-  right: document.getElementById('face_right'),
-  left: document.getElementById('face_left'),
-  back: document.getElementById('face_back'),
-  bottom: document.getElementById('face_bottom')
-};
-let reviewShown = false;
-let reviewAutoOpened = false;
-let cube3dShown = false;
-let cube3dYaw = -35;
-let cube3dPitch = -24;
-let cube3dAutoSpin = true;
-let cube3dDragging = false;
-let cube3dLastX = 0;
-let cube3dLastY = 0;
-
-
-const texturesSrc = {
-  top: 'assets/top.jpg',
-  front: 'assets/front.jpg',
-  right: 'assets/right.jpg',
-  back: 'assets/back.jpg',
-  left: 'assets/left.jpg',
-  bottom: 'assets/bottom.jpg'
-};
-const textures = {};
-
-const faceDefs = [
-  { name:'front', idx:[4,5,6,7], normal:[0,0,1] },
-  { name:'back', idx:[1,0,3,2], normal:[0,0,-1] },
-  { name:'left', idx:[0,4,7,3], normal:[-1,0,0] },
-  { name:'right', idx:[5,1,2,6], normal:[1,0,0] },
-  { name:'top', idx:[3,7,6,2], normal:[0,1,0] },
-  { name:'bottom', idx:[0,1,5,4], normal:[0,-1,0] },
-];
-
-let W=0,H=0,dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
-function resize(){
-  W=window.innerWidth; H=window.innerHeight;
-  canvas.width=W*dpr; canvas.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-window.addEventListener('resize', resize); resize();
-
-const puzzle = {
-  yaw: 0.72,
-  pitch: -0.55,
-  cx: () => W*0.58,
-  cy: () => Math.max(230, H*0.40),
-  scale: () => Math.max(120, Math.min(W,H)*0.18)
-};
-
-const targetPositions = [];
-for (let y=0;y<2;y++) for (let z=0;z<2;z++) for (let x=0;x<2;x++) targetPositions.push({x,y,z});
-
-const pieceColors = ['#efc79e','#b7d59b','#b9daec','#c6b8e4','#f3d8d9','#d8c6ec','#eebdc8','#b8e0be'];
-
-const pieces = targetPositions.map((pos,i)=>({
-  id:i,
-  target:pos,
-  placed:false,
-  slot:null,
-  trayX:0, trayY:0,
-  x:0, y:0,
-  yaw: -0.6 + i*0.22,
-  pitch: -0.4 + (i%2)*0.18,
-  color: pieceColors[i % pieceColors.length],
-  hit:null
-}));
-
-function resetTray(){
-  reviewAutoOpened = false;
-  closeReview();
-  const cols = Math.min(4, Math.max(2, Math.floor(W/170)));
-  const gapX = 118, gapY = 108;
-  const startX = Math.max(80, W/2 - ((cols-1)*gapX)/2);
-  const rows = Math.ceil(pieces.length/cols);
-  const startY = H - rows*gapY - 50;
-  pieces.forEach((p,i)=>{
-    p.placed=false; p.slot=null;
-    const col = i % cols, row = Math.floor(i/cols);
-    p.trayX = startX + col*gapX;
-    p.trayY = startY + row*gapY;
-    p.x = p.trayX; p.y = p.trayY;
-    p.yaw = 0;
-    p.pitch = 0;
-  });
-  updateMsg();
-}
-function shuffleTray(){
-  pieces.forEach((p,i)=>{
-    if (!p.placed) {
-      p.x = p.trayX + (Math.random()*26-13);
-      p.y = p.trayY + (Math.ra<script src="app.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

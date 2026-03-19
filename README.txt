@@ -1,2 +1,1 @@
-GitHub Pages / Jimdo 用 修正版
-index.html, style.css, app.js の3つをそのままGitHubに入れてください。
+この修正版は index.html の二重 canvas 問題を直した GitHub/Jimdo 用です。既存ファイルを全部置き換えてください。

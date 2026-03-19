@@ -4,10 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>立体パズル 最終完成版</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <canvas id="app"></canvas>
+
 <div class="ui">
   <strong>立体パズル 最終完成版</strong>
   空いている場所をドラッグ → 全体を回転<br>
@@ -21,7 +22,7 @@
   </div>
   <div id="msg" style="margin-top:8px;">8個そろうと、隙間0で1つの立方体になります。完成後もドラッグで回転でき、さらに「立体レビュー」で6面を貼った立方体を確認できます。</div>
 </div>
-<canvas id="app"></canvas>
+
 <div id="reviewOverlay" class="reviewOverlay">
   <div class="reviewCard">
     <div class="reviewHead">
@@ -69,12 +70,11 @@
     </div>
     <div class="cube3dHelp">
       <div>自動でゆっくり回転します。ドラッグすると好きな向きで確認できます。</div>
-      <div>
-        <button id="toggleAutoSpinBtn" class="alt">自動回転を止める</button>
-      </div>
+      <div><button id="toggleAutoSpinBtn" class="alt">自動回転を止める</button></div>
     </div>
   </div>
 </div>
+
 <script src="app.js"></script>
 </body>
 </html>

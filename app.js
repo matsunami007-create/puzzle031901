@@ -58,11 +58,10 @@ window.addEventListener('resize', resize); resize();
 const puzzle = {
   yaw: 0.72,
   pitch: -0.55,
-  cx: () => W*0.58,
-  cy: () => Math.max(230, H*0.40),
-  scale: () => Math.max(120, Math.min(W,H)*0.18)
+  cx: () => W*0.5,
+  cy: () => H*0.55,
+  scale: () => Math.min(W,H)*0.25
 };
-
 const targetPositions = [];
 for (let y=0;y<2;y++) for (let z=0;z<2;z++) for (let x=0;x<2;x++) targetPositions.push({x,y,z});
 
